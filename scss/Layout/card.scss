@@ -1,0 +1,33 @@
+.l-card {
+
+}
+
+.c-card {
+    &__items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        margin: -1%;
+    }
+
+    &__item {
+        @include fx-c;
+
+        flex-basis: 31%;
+
+        background: $primary-color;
+
+        height: 120px;
+
+        margin: 1%;
+
+        color: $white;
+
+        transition: box-shadow .2s;
+
+        &:hover {
+            box-shadow: 0 2px 6px 0 $primary-color;
+        }
+    }
+}

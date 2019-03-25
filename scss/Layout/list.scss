@@ -1,0 +1,50 @@
+.l-list {
+
+}
+.c-list {
+    &__item {
+        position: relative;
+
+        display: block;
+
+        padding: 0 32px;
+
+        line-height: 64px;
+        color: $black;
+
+        border-bottom: 1px solid #666;
+        box-sizing: border-box;
+
+        &:first-child {
+            border-top: 1px solid #666;
+        }
+
+        &:hover {
+            background: #eee;
+            transition: .4s;
+        }
+
+        &::before{
+            content: '';
+
+            position: absolute;
+            top: 0;
+            right: 32px;
+            bottom: 0;
+
+            display: block;
+
+            
+            width: 16px;
+            height: 16px;
+            
+            margin: auto;
+
+            border: solid $primary-color;
+            border-width: 1px 1px 0 0;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+    }
+}

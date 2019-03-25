@@ -1,0 +1,86 @@
+.l-gnav {
+    &__humberger {
+        position: fixed;
+        top: 46px;
+        right: 46px;
+    }
+
+    &__menu {
+        position: fixed;
+        top: 0;
+        left: 100%;
+
+        opacity: 0;
+
+        background: $white;
+
+        width: 100vw;
+        height: 100vh;
+
+        transition: .4s;
+        transform: translateX(0);
+
+        z-index: 10;
+    }
+}
+
+.c-gnav {
+    &__humberger {}
+    &__menu {
+        @include fx-c;
+    }
+
+    &__items {
+        width: 320px;
+    }
+}
+
+.c-humberger {
+    cursor: pointer;
+    z-index: 20;
+
+    &__input {
+        display: none;
+    }
+
+    &__line {
+        display: block;
+
+        background: $primary-color;
+
+        width: 32px;
+        height: 3px;
+
+        transition: transform .4s, opacity .2s;
+
+        &--1 {
+            transform-origin: left top;
+        }
+        &--2 {
+            margin: 8px 0;
+        }
+        &--3 {
+            transform-origin: left bottom;
+        }
+    }
+
+    // checked
+    &__input:checked + & {
+        & + .l-gnav__menu {
+            opacity: 1;
+
+            transform: translateX(-100%);
+        }
+    }
+    &__input:checked + & &__line {
+        &--1 {
+            transform: rotate(45deg);
+        }
+        &--2 {
+            opacity: 0;
+        }
+        &--3 {
+            transform: rotate(-45deg);
+        }
+    }
+}

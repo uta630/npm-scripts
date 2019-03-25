@@ -1,0 +1,52 @@
+.l-footer {}
+.c-footer {}
+
+.l-fnav {
+    display: flex;
+    justify-content: center;
+}
+.c-fnav {
+    margin: 24px 0;
+
+    &__items {
+        flex-basis: 24%;
+
+        margin: 0 12px;
+    }
+
+    &__title {
+        padding-bottom: 8px;
+
+        border-bottom: 1px solid $primary-color;
+    }
+
+    &__link {
+        position: relative;
+
+        display: block;
+
+        line-height: 2.4;
+        color: $primary-color;
+        
+        &::before {
+            content: '';
+
+            display: block;
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            background: $primary-color;
+
+            width: 0;
+            height: 1px;
+
+            transition: width .2s;
+        }
+
+        &:hover::before {
+            width: 100%;
+        }
+    }
+}

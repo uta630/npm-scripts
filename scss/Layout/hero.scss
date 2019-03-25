@@ -1,0 +1,41 @@
+$heroContentSize: 320px;
+
+.l-hero {
+    width: 100%;
+    height: 100vh;
+}
+
+.c-hero {
+    @include fx-c;
+    
+    position: relative;
+
+    border: 24px solid $primary-color;
+    box-sizing: border-box;
+
+    &__heading {
+        @include fx-c;
+
+        max-width: $heroContentSize;
+        max-height: $heroContentSize;
+        width: percentage(1 / 3);
+        height: percentage(1 / 3);
+
+        border: 8px solid $primary-color;
+        box-sizing: border-box;
+    }
+
+    &__title {
+        font-size: 32px;
+    }
+
+    &__desc {
+        position: absolute;
+        left: 32px;
+        bottom: 32px;
+
+        padding: 12px;
+
+        border-left: 4px solid $primary-color;
+    }
+}

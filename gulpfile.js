@@ -31,7 +31,8 @@ gulp.task('scss', function() {
       outputStyle: 'expanded',
       importer: packageImporter({
           extensions: ['.scss', '.css']
-      })
+      }),
+      includePaths: require('node-reset-scss').includePath
     }) )
     .pipe( postcss([ autoprefixer() ]) )
     .pipe( postcss([ cssdeclsort({ order: 'alphabetically' }) ]) )
@@ -71,7 +72,7 @@ gulp.task('watch', function(){
   return gulp
     .watch(
       'scss/**/*.scss',
-        gulp.series('scss', 'css', 'bs-reload'),
+        gulp.series('scss', 'css'),
     )
 });
 

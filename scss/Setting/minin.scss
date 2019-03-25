@@ -1,0 +1,8 @@
+/*
+*  display:flexを使用した中央配置
+*/
+@mixin fx-c {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
