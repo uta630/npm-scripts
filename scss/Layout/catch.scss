@@ -1,0 +1,34 @@
+.c-catch {
+    position: relative;
+
+    background: $secondary-color;
+
+    width: 100%;
+    height: 320px;
+
+    @include mq-down('md'){
+        height: 240px;
+    }
+
+    &__title {
+        position: absolute;
+        bottom: 42px;
+        left: 42px;
+
+        padding: 16px;
+
+        font-size: 42px;
+        color: $white;
+
+        border-left: 4px solid $white;
+
+        @include mq-down('md'){
+            bottom: 24px;
+            left: 24px;
+
+            padding: 8px;
+    
+            font-size: 32px;
+        }
+    }
+}

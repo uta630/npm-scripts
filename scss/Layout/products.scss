@@ -1,0 +1,45 @@
+.c-products {
+    @include mq-up('md'){
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__heading {
+        margin-top: 120px;
+    }
+
+    &__image {
+        align-items: flex-start;
+        align-content: flex-start;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-basis: percentage(540 / 1640);
+
+        @include mq-down('md'){
+            margin-bottom: 16px;
+        }
+    }
+
+    &__panel {
+        flex-basis: 100%;
+
+        margin-bottom: 12px;
+    }
+
+    &__thumb {
+        flex-basis: 31%;
+
+        width: 0;
+    }
+
+    &__detail {
+        flex-basis: percentage(1040 / 1640);
+    }
+    &__title {
+        margin-bottom: 12px;
+
+        font-size: 24px;
+    }
+    &__desc {}
+}

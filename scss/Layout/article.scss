@@ -1,0 +1,25 @@
+.c-article {
+    @include mq-up('md'){
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    margin: 24px 0;
+
+    &__image {
+        flex-basis: percentage(812 / 1640);
+
+        @include mq-down('md'){
+            margin-bottom: 12px;
+        }
+    }
+
+    &__detail {
+        flex-basis: percentage(674 / 1640);
+    }
+
+    &__title {
+        margin-bottom: 12px;
+    }
+}

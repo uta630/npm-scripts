@@ -18,8 +18,19 @@
         transition: opacity .2s;
 
         &--sub {
+            flex-basis: percentage(1 / 3);
             background: $secondary-color;
         }
+
+        @include mq-down('md'){
+            flex-basis: 100%;
+            height: 82px;
+
+            &--sub {
+                flex-basis: percentage(1 / 2);
+            }
+        }
+
 
         &:hover {
             opacity: .67;

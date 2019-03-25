@@ -1,0 +1,26 @@
+.c-info {
+    &__heading {
+        margin-top: 120px;
+    }
+
+    &__item {
+        margin-top: 24px;
+        padding-bottom: 24px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $primary-color;
+        }
+    }
+
+    &__title {
+        font-size: 18px;
+    }
+    &__date {
+        display: block;
+
+        margin: 12px 0;
+
+        font-size: 12px;
+    }
+    &__desc {}
+}

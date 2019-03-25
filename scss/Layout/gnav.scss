@@ -33,6 +33,36 @@
     &__items {
         width: 320px;
     }
+
+    &__item {
+        display: block;
+
+        margin: 24px 0;
+        
+        text-align: center;
+        color: $primary-color;
+        font-size: 24px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__sns {
+        flex-basis: 31%;
+
+        text-align: center;
+        color: $primary-color;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .c-humberger {
