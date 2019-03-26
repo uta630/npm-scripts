@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gulp": "gulp",
+    "start": "gulp",
     "watch": "gulp watch"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.5.0",
+    "braces": "^2.3.2",
     "browser-sync": "^2.26.3",
     "css-declaration-sorter": "^4.0.1",
     "gulp": "^4.0.0",
@@ -26,7 +27,6 @@
     "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.0.9",
     "gulp-stylelint": "^8.0.0",
-    "gulp-watch": "^5.0.1",
     "node-reset-scss": "^1.0.1",
     "node-sass-package-importer": "^5.3.1",
     "normalize.css": "^8.0.1",

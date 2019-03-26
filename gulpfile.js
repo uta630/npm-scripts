@@ -44,46 +44,33 @@ gulp.task('scss', function() {
 gulp.task('css', function(){
   return gulp
     .src( './dist/css/style.css' )
-    // .pipe(
-    //   gulpStylelint({
-    //     fix: true
-    //   })
-    // )
     .pipe( header('@charset "utf-8";\n') )
     .pipe( cleanCSS() )
     .pipe( rename({ extname: '.min.css' }) )
     .pipe( gulp.dest( 'dist/css' ) );
 });
 
-// task : browser + auto reload
-gulp.task('browser-sync', function() {
-  return browserSync.init(null, {
-    server: {
-      baseDir: './dist'
-    }
-  });
-});
-gulp.task('bs-reload', function() {
-  browserSync.reload();
-});
+// ローカルサーバーの立ち上げ
+// https://teratail.com/questions/168814
+const browserSyncOption = {
+  server: {
+    baseDir: './dist/'
+  },
+  reloadOnRestart: true
+};
 
-// task : watch
-gulp.task('watch', function(){
-  return gulp
-    .watch(
-      'src/scss/**/*.scss',
-        gulp.series('scss', 'css'),
-    )
-});
+function sync(done) {
+  browserSync.init(browserSyncOption);
+  done();
+}
 
-// task : default
-gulp.task('default',
-  gulp.series('scss', 'css', 'browser-sync'),
-  function(){
-    return gulp
-    .watch(
-      'src/scss/**/*.scss',
-      gulp.series('scss', 'css', 'bs-reload'),
-    )
-  }
-);
+// watch&リロード 処理
+function watchFiles(done) {
+  const browserReload = () => {
+    browserSync.reload();
+    done();
+  };
+  gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', browserReload));
+}
+
+gulp.task('default', gulp.series('scss', 'css', sync, watchFiles));
