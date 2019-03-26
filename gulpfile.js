@@ -24,7 +24,7 @@ const browserSync = require('browser-sync').create();
 // task : scss
 gulp.task('scss', function() {
   return gulp
-    .src( './scss/style.scss' )
+    .src( './src/scss/style.scss' )
     .pipe( plumber({ errorHandler: notify.onError( 'Error: <%= error.message %>' ) }) )
     .pipe( sassGlob() )
     .pipe( sass({
@@ -71,7 +71,7 @@ gulp.task('bs-reload', function() {
 gulp.task('watch', function(){
   return gulp
     .watch(
-      'scss/**/*.scss',
+      'src/scss/**/*.scss',
         gulp.series('scss', 'css'),
     )
 });
@@ -82,7 +82,7 @@ gulp.task('default',
   function(){
     return gulp
     .watch(
-      'scss/**/*.scss',
+      'src/scss/**/*.scss',
       gulp.series('scss', 'css', 'bs-reload'),
     )
   }
