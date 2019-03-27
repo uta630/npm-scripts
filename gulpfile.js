@@ -18,6 +18,9 @@ const header = require('gulp-header');
 const cleanCSS = require('gulp-clean-css');
 const rename = require("gulp-rename");
 
+// require : html
+const htmlmin = require('gulp-htmlmin');
+
 // require : watch
 const browserSync = require('browser-sync').create();
 
@@ -50,6 +53,17 @@ gulp.task('css', function(){
     .pipe( gulp.dest( 'dist/css' ) );
 });
 
+// task : html
+gulp.task('minify-html', function(){
+  return gulp
+    .src('src/*.html')
+    .pipe(htmlmin({
+        collapseWhitespace : true,
+        removeComments : true
+    }))
+    .pipe(gulp.dest('dist'))
+});
+
 // ローカルサーバーの立ち上げ
 // https://teratail.com/questions/168814
 const browserSyncOption = {
@@ -71,6 +85,7 @@ function watchFiles(done) {
     done();
   };
   gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', browserReload));
+  gulp.watch('src/**/*.html').on('change', gulp.series('minify-html', browserReload));
 }
 
-gulp.task('default', gulp.series('scss', 'css', sync, watchFiles));
+gulp.task('default', gulp.series('scss', 'css', 'minify-html', sync, watchFiles));
