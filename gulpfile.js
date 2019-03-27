@@ -1,6 +1,7 @@
 // require : settings
 const gulp = require('gulp');
 const packageImporter = require('node-sass-package-importer');
+const rename = require("gulp-rename");
 
 // require : scss
 const plumber = require('gulp-plumber');
@@ -16,12 +17,14 @@ const postcss = require('gulp-postcss');
 const gulpStylelint = require('gulp-stylelint');
 const header = require('gulp-header');
 const cleanCSS = require('gulp-clean-css');
-const rename = require("gulp-rename");
 
 // require : html
 const htmlmin = require('gulp-htmlmin');
 
-// require : watch
+// require : js
+const uglify = require('gulp-uglify');
+
+// require : ローカルサーバー
 const browserSync = require('browser-sync').create();
 
 // task : scss
@@ -64,6 +67,14 @@ gulp.task('minify-html', function(){
     .pipe(gulp.dest('dist'))
 });
 
+// task : js
+gulp.task('minjs', function() {
+  return gulp.src("src/js/*.js")
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist/js/'));
+});
+
 // ローカルサーバーの立ち上げ
 // https://teratail.com/questions/168814
 const browserSyncOption = {
@@ -86,6 +97,7 @@ function watchFiles(done) {
   };
   gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', browserReload));
   gulp.watch('src/**/*.html').on('change', gulp.series('minify-html', browserReload));
+  gulp.watch('src/**/*.js').on('change', gulp.series('minjs', browserReload));
 }
 
-gulp.task('default', gulp.series('scss', 'css', 'minify-html', sync, watchFiles));
+gulp.task('default', gulp.series('scss', 'css', 'minify-html', 'minjs', sync, watchFiles));

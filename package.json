@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp",
-    "watch": "gulp watch"
+    "start": "gulp"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +27,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.0.9",
     "gulp-stylelint": "^8.0.0",
+    "gulp-uglify": "^3.0.2",
     "node-reset-scss": "^1.0.1",
     "node-sass-package-importer": "^5.3.1",
     "normalize.css": "^8.0.1",
