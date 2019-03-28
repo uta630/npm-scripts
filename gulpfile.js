@@ -27,6 +27,11 @@ const uglify = require('gulp-uglify');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 
+// require : images
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
+const mozjpeg = require('imagemin-mozjpeg');
+
 // require : ローカルサーバー
 const browserSync = require('browser-sync').create();
 
@@ -61,7 +66,8 @@ gulp.task('css', function(){
 
 // task : html
 gulp.task('ejs', function(){
-  return gulp.src(['./src/ejs/*.ejs'])
+  return gulp
+    .src(['./src/ejs/*.ejs'])
     .pipe(plumber({
         handleError: function(err){
             this.emit('end');
@@ -79,6 +85,23 @@ gulp.task('minify-html', function(){
         removeComments : true
     }))
     .pipe(gulp.dest('dist'))
+});
+
+// task : images
+gulp.task('imagemin', function () {
+  return gulp
+    .src('src/images/*.{jpg,jpeg,png,gif,svg}')
+    .pipe(imagemin([
+      pngquant({
+        quality: '65-80',
+        speed: 1
+      }),
+      mozjpeg({
+        quality:85,
+        progressive: true
+      })
+    ]))
+    .pipe(gulp.dest('dist/images'));
 });
 
 // task : webpack
@@ -119,9 +142,16 @@ function watchFiles(done) {
     browserSync.reload();
     done();
   };
-  gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', browserReload));
-  gulp.watch('src/**/*.ejs').on('change', gulp.series('ejs', 'minify-html', browserReload));
-  gulp.watch('src/**/*.js').on('change', gulp.series('webpack', 'minjs', browserReload));
+  gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', 'imagemin', browserReload));
+  gulp.watch('src/**/*.ejs').on('change', gulp.series('ejs', 'minify-html', 'imagemin', browserReload));
+  gulp.watch('src/**/*.js').on('change', gulp.series('webpack', 'minjs', 'imagemin', browserReload));
 }
 
-gulp.task('default', gulp.series('scss', 'css', 'ejs', 'minify-html', 'webpack', 'minjs', sync, watchFiles));
+gulp.task('default',
+  gulp.series(
+    'scss', 'css',
+    'ejs', 'minify-html',
+    'webpack', 'minjs',
+    'imagemin',
+    sync, watchFiles)
+);
