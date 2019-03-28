@@ -1,16 +1,21 @@
 var $ = require('jquery');
  
-$(function(){
+$(window).on('load', function(){
+	// page loding animation
+	$('.js-overlay').addClass('is-hide');
+
 	// thumb pick
 	var $pickThumb = $('.js-pick-thumb');
 	$pickThumb.on('click', function(){
-		var num = $(this).data('thumb-num');
-		$('.js-pick-panel').attr('src', 'http://satyr.io/600x600/'+num);
+		var thumb = $(this).attr('src');
+		$('.js-pick-panel').attr('src', thumb);
+		return false;
 	});
 
 	// pagetop
 	var $pageTopBtn = $('.js-pagetop-btn');
 	$pageTopBtn.on('click', function(){
-		$('html, body').animate({'scrollTop': 0})
+		$('html, body').animate({scrollTop: 0}, 200);
+		return false;
 	});
 });
