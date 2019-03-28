@@ -19,6 +19,7 @@ const header = require('gulp-header');
 const cleanCSS = require('gulp-clean-css');
 
 // require : html
+const ejs = require('gulp-ejs');
 const htmlmin = require('gulp-htmlmin');
 
 // require : js
@@ -59,9 +60,20 @@ gulp.task('css', function(){
 });
 
 // task : html
+gulp.task('ejs', function(){
+  return gulp.src(['./src/ejs/*.ejs'])
+    .pipe(plumber({
+        handleError: function(err){
+            this.emit('end');
+        }
+    }))
+    .pipe(ejs())
+    .pipe(rename({extname: '.html'}))
+    .pipe(gulp.dest('./src/html'));
+});
 gulp.task('minify-html', function(){
   return gulp
-    .src('src/*.html')
+    .src('src/html/*.html')
     .pipe(htmlmin({
         collapseWhitespace : true,
         removeComments : true
@@ -108,8 +120,8 @@ function watchFiles(done) {
     done();
   };
   gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', browserReload));
-  gulp.watch('src/**/*.html').on('change', gulp.series('minify-html', browserReload));
+  gulp.watch('src/**/*.ejs').on('change', gulp.series('ejs', 'minify-html', browserReload));
   gulp.watch('src/**/*.js').on('change', gulp.series('webpack', 'minjs', browserReload));
 }
 
-gulp.task('default', gulp.series('scss', 'css', 'minify-html', 'webpack', 'minjs', sync, watchFiles));
+gulp.task('default', gulp.series('scss', 'css', 'ejs', 'minify-html', 'webpack', 'minjs', sync, watchFiles));
