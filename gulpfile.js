@@ -23,6 +23,8 @@ const htmlmin = require('gulp-htmlmin');
 
 // require : js
 const uglify = require('gulp-uglify');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
 
 // require : ローカルサーバー
 const browserSync = require('browser-sync').create();
@@ -67,9 +69,19 @@ gulp.task('minify-html', function(){
     .pipe(gulp.dest('dist'))
 });
 
-// task : js
+// task : webpack
+gulp.task('webpack',function(){
+  return webpackStream({
+    entry: './src/js/script.js',
+      output: {
+        filename: 'script.js'
+      }
+    }, webpack)
+    .pipe(gulp.dest('dist/js'));
+});
+// task : js minify
 gulp.task('minjs', function() {
-  return gulp.src("src/js/*.js")
+  return gulp.src("dist/js/script.js")
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('dist/js/'));
@@ -97,7 +109,7 @@ function watchFiles(done) {
   };
   gulp.watch('src/scss/**/*.scss').on('change', gulp.series('scss', 'css', browserReload));
   gulp.watch('src/**/*.html').on('change', gulp.series('minify-html', browserReload));
-  gulp.watch('src/**/*.js').on('change', gulp.series('minjs', browserReload));
+  gulp.watch('src/**/*.js').on('change', gulp.series('webpack', 'minjs', browserReload));
 }
 
-gulp.task('default', gulp.series('scss', 'css', 'minify-html', 'minjs', sync, watchFiles));
+gulp.task('default', gulp.series('scss', 'css', 'minify-html', 'webpack', 'minjs', sync, watchFiles));
