@@ -31,6 +31,12 @@
         flex-basis: 31%;
 
         width: 0;
+
+        cursor: pointer;
+
+        &:hover {
+            opacity: .8;
+        }
     }
 
     &__detail {
@@ -41,5 +47,6 @@
 
         font-size: 24px;
     }
+
     &__desc {}
 }
