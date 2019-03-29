@@ -93,11 +93,11 @@ gulp.task('imagemin', function () {
     .src('src/images/*.{jpg,jpeg,png,gif,svg}')
     .pipe(imagemin([
       pngquant({
-        quality: '65-80',
+        quality: [.65, .85],
         speed: 1
       }),
       mozjpeg({
-        quality:85,
+        quality: 85,
         progressive: true
       })
     ]))
