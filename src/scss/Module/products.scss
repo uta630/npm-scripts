@@ -34,8 +34,8 @@
 
         cursor: pointer;
 
-        &:hover {
-            opacity: .8;
+        &:hover, &.is-active {
+            opacity: .7;
         }
     }
 

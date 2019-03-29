@@ -10,11 +10,16 @@ $heroContentSize: 320px;
     
     position: relative;
 
+    background: url(/images/bg.jpg) no-repeat center center;
+    background-size: cover;
+
     border: 24px solid $primary-color;
     box-sizing: border-box;
 
     &__heading {
         @include fx-c;
+
+        background: $white;
 
         max-width: $heroContentSize;
         max-height: $heroContentSize;

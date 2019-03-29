@@ -9,6 +9,10 @@ $(window).on('load', function(){
 	$pickThumb.on('click', function(){
 		var thumb = $(this).attr('src');
 		$('.js-pick-panel').attr('src', thumb);
+
+		$pickThumb.removeClass('is-active');
+		$(this).addClass('is-active');
+		
 		return false;
 	});
 
