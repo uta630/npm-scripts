@@ -1,10 +1,10 @@
 {
-  "name": "gulp-site",
+  "name": "npm-scripts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "webpack",
     "watch": "gulp watch",
     "dev": "gulp --env development",
     "prod": "gulp --env production"
@@ -48,6 +48,8 @@
     "node-sass-package-importer": "^5.3.2",
     "normalize.css": "^8.0.1",
     "stylelint": "^10.1.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
