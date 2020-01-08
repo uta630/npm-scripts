@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack",
-    "watch": "gulp watch",
-    "dev": "gulp --env development",
-    "prod": "gulp --env production"
+    "compile:ejs2html": "ejs-cli -b src/ejs/ \"/**/[^_]*.ejs\" -o dist/",
+    "watch:ejs2html": "chokidar \"src/ejs/\" -c \"npm run compile:ejs2html\" --initial"
   },
   "keywords": [],
   "author": "",
@@ -18,8 +17,10 @@
     "babel-preset-es2015": "^6.24.1",
     "braces": "^3.0.2",
     "browser-sync": "^2.26.7",
+    "chokidar-cli": "^2.1.0",
     "css-declaration-sorter": "^4.0.1",
     "ejs": "^2.6.2",
+    "ejs-cli": "^2.1.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.2.0",
