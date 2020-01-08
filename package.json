@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack",
     "compile:ejs2html": "ejs-cli -b src/ejs/ \"/**/[^_]*.ejs\" -o dist/",
-    "watch:ejs2html": "chokidar \"src/ejs/\" -c \"npm run compile:ejs2html\" --initial"
+    "watch:ejs2html": "chokidar \"src/ejs/\" -c \"npm run compile:ejs2html\" --initial",
+    "start:server": "browser-sync start -s dist -w src/*.html src/css/*.css src/js/*.js"
   },
   "keywords": [],
   "author": "",
