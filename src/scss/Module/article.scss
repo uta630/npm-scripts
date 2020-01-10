@@ -1,5 +1,5 @@
 .c-article {
-    @include mq-up('md'){
+    @include mq-up('md') {
         align-items: center;
         display: flex;
         justify-content: space-between;
@@ -10,7 +10,7 @@
     &__image {
         flex-basis: percentage(812 / 1640);
 
-        @include mq-down('md'){
+        @include mq-down('md') {
             margin-bottom: 12px;
         }
     }

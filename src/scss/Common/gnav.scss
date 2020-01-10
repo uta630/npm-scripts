@@ -25,7 +25,8 @@
 }
 
 .c-gnav {
-    &__humberger {}
+    &__humberger {
+    }
     &__menu {
         @include fx-c;
     }
@@ -38,7 +39,7 @@
         display: block;
 
         margin: 24px 0;
-        
+
         text-align: center;
         color: $primary-color;
         font-size: 24px;

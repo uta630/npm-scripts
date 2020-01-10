@@ -22,7 +22,7 @@
 
         transition: box-shadow .2s;
 
-        @include mq-down('md'){
+        @include mq-down('md') {
             flex-basis: 48%;
         }
 
