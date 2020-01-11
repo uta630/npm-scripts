@@ -1,25 +1,28 @@
-var $ = require('jquery');
- 
-$(window).on('load', function(){
-	// page loding animation
-	$('.js-overlay').addClass('is-hide');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const $ = require('jquery');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const window = require('global/window');
 
-	// thumb pick
-	var $pickThumb = $('.js-pick-thumb');
-	$pickThumb.on('click', function(){
-		var thumb = $(this).attr('src');
-		$('.js-pick-panel').attr('src', thumb);
+$(window).on('load', function() {
+    // page loding animation
+    $('.js-overlay').addClass('is-hide');
 
-		$pickThumb.removeClass('is-active');
-		$(this).addClass('is-active');
-		
-		return false;
-	});
+    // thumb pick
+    const $pickThumb = $('.js-pick-thumb');
+    $pickThumb.on('click', function() {
+        const thumb = $(this).attr('src');
+        $('.js-pick-panel').attr('src', thumb);
 
-	// pagetop
-	var $pageTopBtn = $('.js-pagetop-btn');
-	$pageTopBtn.on('click', function(){
-		$('html, body').animate({scrollTop: 0}, 200);
-		return false;
-	});
+        $pickThumb.removeClass('is-active');
+        $(this).addClass('is-active');
+
+        return false;
+    });
+
+    // pagetop
+    const $pageTopBtn = $('.js-pagetop-btn');
+    $pageTopBtn.on('click', function() {
+        $('html, body').animate({ scrollTop: 0 }, 200);
+        return false;
+    });
 });
