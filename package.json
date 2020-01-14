@@ -26,7 +26,8 @@
     "format:all": "run-p format:scss format:js",
     "min:css": "cleancss -o dist/css/style.css dist/css/style.css",
     "min:js": "uglifyjs dist/js/script.js -o dist/js/script.js",
-    "prepare:all": "run-p min:js min:css delete:map"
+    "prepare:all": "run-p min:js min:css delete:map",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -56,6 +57,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
+    "jest": "^24.9.0",
     "minimist": "^1.2.0",
     "node-reset-scss": "^1.0.1",
     "node-sass": "^4.13.0",
