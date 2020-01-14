@@ -32,11 +32,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
     "autoprefixer": "^9.6.1",
-    "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-loader": "^8.0.6",
     "braces": "^3.0.2",
     "browser-sync": "^2.26.7",
     "chokidar-cli": "^2.1.0",
@@ -78,7 +79,6 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.5.5",
     "global": "^4.4.0",
     "jquery": "^3.4.1",
     "object-assign": "^4.1.1",
