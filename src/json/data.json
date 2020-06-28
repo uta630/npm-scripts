@@ -2,13 +2,13 @@
   "data": [
     {
       "flg": false,
-      "text": "dammy text",
+      "text": "dummy text",
       "url": "#",
       "date": "2018-01-01 23:59:59"
     },
     {
       "flg": false,
-      "text": "dammy text",
+      "text": "dummy text",
       "url": "",
       "date": "2020-12-31 00:00:00"
     }
