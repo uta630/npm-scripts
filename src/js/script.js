@@ -1,7 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const $ = require('jquery');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const window = require('global/window');
+import $ from 'jquery';
+import window from 'global/window';
 
 $(window).on('load', function() {
     // page loding animation
@@ -30,4 +28,20 @@ $(window).on('load', function() {
 function sum(x = 0, y = 0, z = 0) {
     return x + y + z;
 }
-module.exports = sum;
+export default sum;
+
+const pageDataUrl = `${window.location.origin}/json/data.json`;
+fetch(pageDataUrl)
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error();
+        }
+    })
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.log(err);
+    });
