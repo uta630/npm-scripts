@@ -1,3 +1,5 @@
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: './src/js/script.js',
@@ -25,5 +27,20 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new BrowserSyncPlugin({
+      host: 'localhost',
+      port: 3000,
+      server: {
+        baseDir: ['dist'],
+        middleware: [
+          function(req, res, next) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            next();
+          }
+        ]
+      }
+    })
+  ]
 };
