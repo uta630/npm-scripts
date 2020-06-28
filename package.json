@@ -18,7 +18,7 @@
     "watch:js": "webpack -w",
     "watch:images": "chokidar \"src/images/**/*\" --command \"node imagemin.js\" --initial",
     "watch:json": "chokidar \"src/json/\" --command \"npm run compile:json\" --initial",
-    "watch:all": "run-p watch:ejs2html watch:scss2cssprefix watch:js watch:images watch:json start:server",
+    "watch:all": "run-p watch:ejs2html watch:scss2cssprefix watch:js watch:images watch:json",
     "lint:scss": "stylelint \"src/**/*.scss\"",
     "lint:ts": "eslint src/ts/**/*.ts",
     "lint:js": "eslint src/js/**/*.js",
