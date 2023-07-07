@@ -72,7 +72,7 @@
     "postcss-cli": "^7.1.1",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
-    "stylelint": "^10.1.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^7.0.0",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-order": "^4.1.0",
